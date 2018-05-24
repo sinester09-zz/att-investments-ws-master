@@ -43,7 +43,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	private static final String[] PUBLIC_MATCHERS_POST = {
 			"/user/newuser/**",	
 			"/user/confirm/**",
-			"/auth/**"
+			"/auth/**",
+			"/compl/insert/**",
+			"/bank/insert/**"
 	};
 	
 	@Override

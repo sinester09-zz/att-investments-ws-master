@@ -25,6 +25,7 @@ import br.com.attinvestments.domain.User;
 import br.com.attinvestments.domain.UserRole;
 import br.com.attinvestments.dto.ConfirmEmailDTO;
 import br.com.attinvestments.dto.UserNewDTO;
+import br.com.attinvestments.dto.UserUpdateDTO;
 import br.com.attinvestments.repositories.RoleRepository;
 import br.com.attinvestments.repositories.UserProfileRepository;
 import br.com.attinvestments.repositories.UserRepository;
@@ -44,6 +45,7 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private RoleRepository roleRepo;
+	
 	
 	@Autowired
 	private UserProfileRepository userProfileRepo;
@@ -135,6 +137,24 @@ public class UserServiceImpl implements UserService {
 				.setSubject(email)
 				.signWith(SignatureAlgorithm.HS512, secret.getBytes())
 				.compact();
+	}
+	
+	@Transactional
+	public void aprove(UserUpdateDTO objDto ) {
+		User user = userRepo.findByEmail(objDto.getEmail());	
+		
+		if(user!=null) {
+			
+			
+			Role role = roleRepo.getOne(objDto.getRole());
+			
+			role.setRole("3");
+			
+		//	userProfileRepo.save(entity)	
+			
+		}
+		
+		
 	}
 
 }

@@ -19,11 +19,10 @@ public class BankNewDTO implements Serializable {
 	private String typePerson;
 	
 	@NotEmpty(message="Preenchimento obrigatório")
-	@Email(message="Email inválido")
+	
 	private String bank;
 	
 	@NotEmpty(message="Preenchimento obrigatório")
-	@Email(message="Email inválido")
 	private String agency;
 	
 	@NotEmpty(message="Idíoma o preenchimento obrigatório")

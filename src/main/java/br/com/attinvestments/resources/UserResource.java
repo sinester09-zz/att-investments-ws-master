@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.attinvestments.domain.User;
 import br.com.attinvestments.dto.ConfirmEmailDTO;
 import br.com.attinvestments.dto.UserNewDTO;
+import br.com.attinvestments.dto.UserUpdateDTO;
 import br.com.attinvestments.services.UserService;
 
 
@@ -47,5 +48,15 @@ public class UserResource {
 		}
 		return ResponseEntity.created(uri).build();
 	}
+	
+	
+	@RequestMapping(value="/aprove", method = RequestMethod.POST)
+	public ResponseEntity<Void> Aprove(@Valid @RequestBody UserUpdateDTO objDto) {
+		 service.aprove(objDto);		
+		return ResponseEntity.noContent().build();
+		
+		
+	}
+	
 	
 }
